@@ -1,0 +1,28 @@
+"0","model <- lm(HappinessScore ~ GDP + SocialSupport + Health + Freedom + Generosity + Trust, data = cor_data)"
+"0","summary(model)"
+"1","
+Call:
+lm(formula = HappinessScore ~ GDP + SocialSupport + Health + 
+    Freedom + Generosity + Trust, data = cor_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.92864 -0.32283  0.01871  0.35508  1.66179 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)    2.17507    0.07991  27.219  < 2e-16 ***
+GDP            1.13600    0.08415  13.500  < 2e-16 ***
+SocialSupport  0.64590    0.08092   7.982 5.21e-15 ***
+Health         1.01271    0.13201   7.671 5.12e-14 ***
+Freedom        1.48127    0.16346   9.062  < 2e-16 ***
+Generosity     0.59244    0.17570   3.372 0.000784 ***
+Trust          0.85823    0.22344   3.841 0.000133 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.55 on 774 degrees of freedom
+Multiple R-squared:  0.7637,	Adjusted R-squared:  0.7619 
+F-statistic:   417 on 6 and 774 DF,  p-value: < 2.2e-16
+
+"

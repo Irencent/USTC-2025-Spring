@@ -1,0 +1,33 @@
+{
+    "id": "C7701F2B",
+    "path": "~/Desktop/实用统计软件/Final_Project/scripts/global_happiness_r.Rmd",
+    "project_path": "scripts/global_happiness_r.Rmd",
+    "type": "r_markdown",
+    "hash": "4213599998",
+    "contents": "",
+    "dirty": false,
+    "created": 1749278714257.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "tempName": "Untitled1",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "45,0",
+        "scrollLine": "182",
+        "rmdVisualMode": "true",
+        "rmdVisualWrapConfigured": "true",
+        "docOutlineVisible": "1",
+        "rmdVisualCollapsedChunks": "",
+        "rmdVisualModeLocation": "1782:694",
+        "last_setup_crc32": "89f6b8d48bc702e0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1749292983,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1749292983757,
+    "read_only": false,
+    "read_only_alternatives": []
+}

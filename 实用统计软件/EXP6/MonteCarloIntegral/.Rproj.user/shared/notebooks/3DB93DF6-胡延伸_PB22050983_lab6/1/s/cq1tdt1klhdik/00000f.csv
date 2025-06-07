@@ -1,0 +1,61 @@
+"0","install.packages(""./TimesTwoRcpp_0.1.0.tar.gz"", repos = NULL)"
+"2","* installing *source* package ‘TimesTwoRcpp’ ...
+** this is package ‘TimesTwoRcpp’ version ‘0.1.0’
+"
+"2","** using staged installation
+"
+"2","** libs
+"
+"2","using C++ compiler: ‘Apple clang version 16.0.0 (clang-1600.0.26.6)’
+"
+"2","using SDK: ‘’
+"
+"1","clang++ -arch arm64 -std=gnu++17 -I""/Library/Frameworks/R.framework/Resources/include"" -DNDEBUG  -I'/Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/library/Rcpp/include' -I/opt/R/arm64/include    -fPIC  -falign-functions=64 -Wall -g -O2   -c RcppExports.cpp -o RcppExports.o
+"
+"1","clang++ -arch arm64 -std=gnu++17 -I""/Library/Frameworks/R.framework/Resources/include"" -DNDEBUG  -I'/Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/library/Rcpp/include' -I/opt/R/arm64/include    -fPIC  -falign-functions=64 -Wall -g -O2   -c timesTwo.cpp -o timesTwo.o
+"
+"1","clang++ -arch arm64 -std=gnu++17 -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -L/Library/Frameworks/R.framework/Resources/lib -L/opt/R/arm64/lib -o TimesTwoRcpp.so RcppExports.o timesTwo.o -F/Library/Frameworks/R.framework/.. -framework R
+"
+"2","installing to /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/library/00LOCK-TimesTwoRcpp/00new/TimesTwoRcpp/libs
+** R
+** byte-compile and prepare package for lazy loading
+"
+"2","** help
+"
+"1","No man pages found in package  ‘TimesTwoRcpp’ 
+"
+"2","*** installing help indices
+"
+"2","** building package indices
+"
+"2","** testing if installed package can be loaded from temporary location
+"
+"2","** checking absolute paths in shared objects and dynamic libraries
+"
+"2","** testing if installed package can be loaded from final location
+"
+"2","** testing if installed package keeps a record of temporary installation path
+* DONE (TimesTwoRcpp)
+"
+"0","install.packages('MonteCarloIntegral_1.0.0.tar.gz', repos = NULL)"
+"2","* installing *source* package ‘MonteCarloIntegral’ ...
+** this is package ‘MonteCarloIntegral’ version ‘1.0.0’
+"
+"2","** using staged installation
+"
+"2","** R
+** byte-compile and prepare package for lazy loading
+"
+"2","** help
+"
+"2","*** installing help indices
+"
+"2","** building package indices
+"
+"2","** testing if installed package can be loaded from temporary location
+"
+"2","** testing if installed package can be loaded from final location
+"
+"2","** testing if installed package keeps a record of temporary installation path
+* DONE (MonteCarloIntegral)
+"

@@ -1,0 +1,27 @@
+{
+    "id": "33FEC609",
+    "path": "~/Desktop/实用统计软件/EXP6/MonteCarloIntegral/R/plot.MCI.R",
+    "project_path": "R/plot.MCI.R",
+    "type": "r_source",
+    "hash": "2098938287",
+    "contents": "",
+    "dirty": false,
+    "created": 1748177187158.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "tempName": "Untitled1",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "10,0",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1748178127,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1748178127509,
+    "read_only": false,
+    "read_only_alternatives": []
+}

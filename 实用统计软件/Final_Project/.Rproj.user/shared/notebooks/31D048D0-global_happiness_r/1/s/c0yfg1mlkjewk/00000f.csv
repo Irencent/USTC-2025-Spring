@@ -1,0 +1,16 @@
+"0","cor_data <- happiness_all %>%"
+"0","  select(HappinessScore, GDP, SocialSupport, Health, Freedom, Generosity, Trust) %>%"
+"0","  na.omit()  # 删除缺失值"
+"0",""
+"0","# 计算皮尔逊相关系数矩阵"
+"0","cor_matrix <- cor(cor_data, use = ""complete.obs"", method = ""pearson"")"
+"0","print(round(cor_matrix, 2))"
+"1","               HappinessScore   GDP SocialSupport Health Freedom Generosity Trust
+HappinessScore           1.00  0.79          0.65   0.74    0.55       0.14  0.40
+GDP                      0.79  1.00          0.59   0.79    0.35      -0.01  0.31
+SocialSupport            0.65  0.59          1.00   0.57    0.42      -0.04  0.13
+Health                   0.74  0.79          0.57   1.00    0.34       0.01  0.25
+Freedom                  0.55  0.35          0.42   0.34    1.00       0.29  0.46
+Generosity               0.14 -0.01         -0.04   0.01    0.29       1.00  0.32
+Trust                    0.40  0.31          0.13   0.25    0.46       0.32  1.00
+"

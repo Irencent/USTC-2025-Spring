@@ -1,0 +1,18 @@
+"0","# 计算积分"
+"0","set.seed(15)"
+"0","result <- mc_int("
+"0","  x_range = c(-2, 2),"
+"0","  fun = ""exp(-x^2/2)/sqrt(2*pi)"",  # 正确语法"
+"0","  B = 1e6,"
+"0","  seed = 15"
+"0",")"
+"0",""
+"0","# 输出结果"
+"0","cat(""Estimated Integral:"", result$I, ""\n"")           # 应接近 0.9544997"
+"1","Estimated Integral: 0.9544211 
+"
+"0","cat(""True Value (approx):"", pnorm(2) - pnorm(-2), ""\n"")"
+"1","True Value (approx): 0.9544997 
+"
+"0","# 绘图"
+"0","plot(result)  # 应显示正态分布曲线和积分区域"

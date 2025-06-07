@@ -1,0 +1,16 @@
+"0","library(Rcpp)"
+"0",""
+"0","# 编译Rcpp函数"
+"0","sourceCpp(""monte_carlo_integral.cpp"")"
+"0",""
+"0","# 计算积分"
+"0","set.seed(15)  # 额外设置种子（可选，函数内部已设置）"
+"0","result <- monte_carlo_integral(a = -2, b = 2, B = 1e6, seed = 15)"
+"0",""
+"0","# 输出结果"
+"0","cat(""蒙特卡洛估计值:"", result, ""\n"")"
+"1","蒙特卡洛估计值: 0.9544211 
+"
+"0","cat(""理论值 (pnorm(2) - pnorm(-2)):"", pnorm(2) - pnorm(-2), ""\n"")"
+"1","理论值 (pnorm(2) - pnorm(-2)): 0.9544997 
+"

@@ -1,0 +1,223 @@
+---
+title: "实用统计软件HW2"
+author: "胡延伸PB22050983"
+date: "2025-03-30"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## **因子类型数据**
+
+``` r
+x <- factor(c("男", "女", "男", "女"))
+```
+
+1.  变量`x`有几个水平值，分别是什么？
+
+    变量 `x` 有两个水平值，“男” 和 “女”。
+
+2.  通过`levels()`函数把`x`中的“男”改成“M”，“女”改成“F”，并将`x`通过`cat()`函数输出到`factor.txt`文档中。
+
+    ```{r}
+    x <- factor(c("男", "女", "男", "女"))
+    levels(x)[levels(x) == "男"] <- "M"
+    levels(x)[levels(x) == "女"] <- "F"
+
+    cat(as.character(x), file = "factor.txt")
+    ```
+
+3.  将以下因子类型数据按照年级从低到高进行排序。
+
+``` r
+y <- factor(c("大一", "大四", "大三", "大二"))
+```
+
+```{r}
+# 创建有序因子
+y <- factor(c("大一", "大四", "大三", "大二"), 
+            levels = c("大一", "大二", "大三", "大四"), 
+            ordered = TRUE)
+
+# 排序并输出
+sorted_y <- sort(y)
+print(sorted_y)
+```
+
+## **向量**
+
+现有10个人的期末考试成绩为
+
+> 100, 65, 80, 79, 88, 95, 93, 35, 56, 68
+
+1.  创建向量`x`来存储上述数据；
+
+    ```{r}
+    x <- c(100, 65, 80, 79, 88, 95, 93, 35, 56, 68)
+    ```
+
+2.  将`x`从小到大排序，并分别找出最大值，最小值、中位数和第三大的元素；
+
+    ```{r}
+    # 从小到大排序
+    sorted_x <- sort(x)
+    cat("排序后的向量:", sorted_x, "\n")
+
+    # 最大值
+    max_value <- max(x)
+    cat("最大值:", max_value, "\n")
+
+    # 最小值
+    min_value <- min(x)
+    cat("最小值:", min_value, "\n")
+
+    # 中位数
+    median_value <- median(x)
+    cat("中位数:", median_value, "\n")
+
+    # 第三大的元素（先降序排序后取第三个）
+    third_largest <- sort(x, decreasing = TRUE)[3]
+    cat("第三大的元素:", third_largest, "\n")
+    ```
+
+3.  提取奇数位置的元素并显示；
+
+    ```{r}
+    odd_position_elements <- x[seq(1, length(x), by = 2)]
+    cat("奇数位置的元素:", odd_position_elements, "\n")
+    ```
+
+4.  返回偶数（不包含缺失值）。
+
+    ```{r}
+    even_values <- x[x %% 2 == 0]
+    cat("偶数元素:", even_values, "\n")
+    ```
+
+## 矩阵
+
+1.  创建一个10×10的矩阵`m`，其对角线元素分别为1, 2, …, 10；
+
+    ```{r}
+    m <- diag(1:10, nrow = 10, ncol = 10)
+    print("初始矩阵 m:")
+    print(m)
+    ```
+
+2.  计算`m`的逆，并求解关于𝑦的线性方程组𝑚𝑦=𝑥；
+
+    ```{r}
+    x <- rep(1, 10)  # 创建长度为10的全1向量
+    inv_m <- solve(m)  # 计算逆矩阵
+    y <- inv_m %*% x  # 解方程 m𝑦=𝑥
+    print("解向量 y:")
+    print(y)
+    ```
+
+3.  将上述矩阵的第2行除对角线外的所有元素赋值为100；
+
+    ```{r}
+    m[2, -2] <- 100  # -2 表示排除第2列（对角线）
+    print("修改后的矩阵 m:")
+    print(m)
+    ```
+
+4.  提取`m`的第5行第9列的元素并输出到命令行，然后将其重新赋值为`NA`；
+
+    ```{r}
+    element <- m[5, 9]
+    cat("提取的元素值:", element, "\n")
+    m[5, 9] <- NA  # 赋值为NA
+    print("修改后的矩阵 m:")
+    print(m)
+    ```
+
+5.  给`m`的列命名为”c1”, “c2”,…“c10”；
+
+    ```{r}
+    colnames(m) <- paste0("c", 1:10)
+    print("添加列名后的矩阵 m:")
+    print(m)
+    ```
+
+6.  给`m`增加一行，元素为上面定义的向量`x`;
+
+    ```{r}
+    m <- rbind(m, x)  # 添加第11行
+    print("添加新行后的矩阵 m:")
+    print(m)
+    ```
+
+7.  按行计算平均值，输出的结果不能包含`NA`；
+
+    ```{r}
+    row_means <- rowMeans(m, na.rm = TRUE)
+    print("按行计算的平均值:")
+    print(row_means)
+    ```
+
+8.  构造一个10×10×3的数组`arr`，其中`arr[,,1]`为`m`，`arr[,,1]`为`2m`，`arr[,,1]`为`3m`。
+
+    ```{r}
+    arr <- array(
+      data = c(m, 2*m, 3*m),  # 依次填充 m, 2m, 3m
+      dim = c(10, 10, 3)       # 维度为10×10×3
+    )
+    print("三维数组 arr 的维度:")
+    print(dim(arr))
+    ```
+
+## **列表**
+
+构造一个列表`score`，存放学生李明的成绩，如下：
+
+```         
+score <- list(name="李明", id = "PB1", age=19, scores=c(85, 76, 90))
+```
+
+1.  提取年龄，以今年为记录时间计算其出生年份；
+
+    ```{r}
+    score <- list(name="李明", id = "PB1", age=19, scores=c(85, 76, 90))
+
+    current_year <- as.integer(format(Sys.Date(), "%Y"))
+    birth_year <- current_year - score$age
+    cat("出生年份:", birth_year, "\n")
+    ```
+
+2.  最后一个元素展示的是语数英三科的成绩，提取出来记为`y`, 并计算其平均成绩；
+
+    ```{r}
+    y <- score$scores
+    mean_score <- mean(y)
+    cat("平均成绩:", mean_score, "\n")
+    ```
+
+3.  增加一个元素记录是否是优秀学生，其中优秀学生的定义为平均成绩大于85分。
+
+    ```{r}
+    score$excellent <- mean_score > 85
+    print(score)
+    ```
+
+## **数据框和处理数据**
+
+covid19.csv文档里面记录了某地区新冠病人的住院信息。
+
+1.  把covid19.csv读入到数据框`pat1`中，找出性别中有缺失值的行并将其删除，删除后的数据框仍然记为`pat1`；
+
+2.  新建”住院时间”列，具体计算公式为出院时间-入院时间+1，然后按照分型计算平均住院时间，最长住院时间和最短住院时间；
+
+3.  把年龄分成0—18, 19—45, 46-60, 61-70, 70以上各段， 保存为“年龄段”变量，并将其加入到数据框`d`中；
+
+4.  用年龄段和性别交叉汇总发病人数，并计算其占总人数的百分比(结果乘以100并保留一位小数)， 保存到“年龄性别分布.csv”中 要求将每个年龄段的男性病人数、女性发病人数存为一行。
+
+covid19-3.csv文档记录病人入院前的基本信息。
+
+5.  把covid19-3.csv读入到数据框`pat2`中，输出其列名和前三行的内容；
+
+6.  合并`pat1`和`pat2`，并将合并后的数据框定义为`pat`，要求合并后保留pat1所有的行;
+
+7.  输出病人最多的三个职业，并统计每个职业中住院时间不超过10天、超过10天的人数和平均年龄。

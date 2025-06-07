@@ -1,0 +1,145 @@
+---
+title: "第三次作业 (Due: 2025/05/11, 23:59:59)"
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+1.  请根据以下定义编写函数myfun， $$
+    f(x) = \left\{ \begin{array}{cl} x-\lambda & \mathrm{if}~x > \lambda\\
+    0 &\mathrm{if}~ |x| \leq \lambda\\
+    x + \lambda &\mathrm{if}~ x< -\lambda\end{array}\right.
+    $$ 其中输入为数值型向量或者标量`x`，正数 $\lambda$ 。绘制如下图形：
+
+    ```{r}
+    # 定义分段函数
+    myfun <- function(x, lambda) {
+      ifelse(x > lambda, x - lambda,
+             ifelse(x < -lambda, x + lambda, 0))
+    }
+
+    # 生成数据范围
+    x <- seq(-3, 3, length.out = 1000)
+    lambda <- 1  # 可调整 lambda 的值
+
+    # 计算不同 lambda 对应的函数值
+    y_lambda <- myfun(x, lambda)
+    y_lambda0 <- myfun(x, 0)
+
+    # 绘制图像
+    plot(x, y_lambda, type = "l", col = "blue", lwd = 2,
+         xlab = "x", ylab = "f(x)", 
+         main = expression(paste("Function f(x) with ", lambda, "=1 and ", lambda, "=0")))
+    lines(x, y_lambda0, col = "red", lty = 2, lwd = 2)
+    legend("topleft", legend = c(expression(lambda == 1), expression(lambda == 0)),
+           col = c("blue", "red"), lty = c(1, 2), lwd = 2)
+    ```
+
+2.  基于上述函数编写求解以下问题的算法（需要用到循环结构） $$
+    \min_\beta L(\beta) - \frac{1}{2} \|y- X\beta\|^2 + \lambda \sum_{j=1}^3 |\beta_j|,
+    $$ 其中y 是一个n维的向量， X是一个 $n\times 3$ 的矩阵， $\beta$
+    是一个3维的向量。算法描述如下：
+
+    -   在给定当前解 $\hat\beta$ 时，对每一个维度 $j$ ,局部最优解为 $$
+         f\left(\frac{X_j^T(y-X\hat\beta + X_j\hat\beta_j)}{\|X_j\|^2}, \lambda/\|X_j\|^2\right)
+        $$
+
+    -   遍历 $j=1, 2, 3, 1, 2, 3, \dots$
+        直到前后两个解的平方差小于给定的误差（如 `1e-6` ）。
+
+最后通过模拟数据验证上述算法是否编写正确并输出最后的估计值，模拟数据代码如下：
+
+```{r}
+set.seed(123)
+beta <- c(1,0, 0.5)
+n <- 100
+library(MASS)
+
+mean <- c(0, 0, 0) 
+Sigma <- matrix(0.5, nrow= 3, ncol=3)
+diag(Sigma) <- 1
+x <- mvrnorm(n = n, mu = mean, Sigma = Sigma)
+
+y <- x%*%beta + rnorm(n, 0, 0.5)
+```
+
+```{r}
+coordinate_descent <- function(X, y, lambda, max_iter = 1000, tol = 1e-6) {
+  p <- ncol(X)
+  beta <- rep(0, p)  # 初始化 beta 为全零
+  iter <- 0
+  converged <- FALSE
+  
+  while (iter < max_iter && !converged) {
+    beta_old <- beta
+    
+    # 遍历每个维度更新系数
+    for (j in 1:p) {
+      X_j <- X[, j]
+      # 计算残差（移除当前维度的贡献）
+      r <- y - X %*% beta + X_j * beta[j]
+      # 计算局部最优解
+      a <- sum(X_j * r) / sum(X_j^2)
+      lambda_scaled <- lambda / sum(X_j^2)
+      beta[j] <- myfun(a, lambda_scaled)
+    }
+    
+    # 检查收敛条件
+    if (sqrt(sum((beta - beta_old)^2)) < tol) converged <- TRUE
+    iter <- iter + 1
+  }
+  beta
+}
+
+set.seed(123)
+beta_true <- c(1, 0, 0.5)
+n <- 100
+library(MASS)
+
+# 生成协方差矩阵
+Sigma <- matrix(0.5, nrow = 3, ncol = 3)
+diag(Sigma) <- 1
+
+# 生成数据
+X <- mvrnorm(n, mu = c(0, 0, 0), Sigma = Sigma)
+y <- X %*% beta_true + rnorm(n, 0, 0.5)
+
+# 运行算法（lambda=0 时应接近 OLS 解）
+beta_hat <- coordinate_descent(X, y, lambda = 0.1)
+print(beta_hat)  # 预期输出接近 [1.0, 0.0, 0.5]
+```
+
+3.  基于2中的算法，绘制不同 $\lambda$ 值下 $\beta$
+    估计值的变化图，如下图所示。其中，第 $j$ 条折线表示的是 $\beta_j$
+    的估计值随 $\lambda$ 值变化的趋势。
+
+
+```{r}
+library(ggplot2)
+
+# 生成 lambda 序列
+lambda_seq <- exp(seq(log(0.01), log(10), length.out = 50))
+
+# 计算不同 lambda 下的系数估计
+beta_path <- t(sapply(lambda_seq, function(lam) coordinate_descent(X, y, lam)))
+
+# 转换为长格式数据
+library(tidyr)
+df <- data.frame(lambda = lambda_seq, beta1 = beta_path[,1], 
+                 beta2 = beta_path[,2], beta3 = beta_path[,3])
+df_long <- pivot_longer(df, cols = -lambda, names_to = "coefficient")
+
+# 绘制路径图
+ggplot(df_long, aes(x = lambda, y = value, color = coefficient)) +
+  geom_line(linewidth = 1) +
+  scale_x_log10() +  # x轴取对数刻度
+  labs(x = "lambda (log scale)", y = "Coefficient Estimate", 
+       title = "Lasso Solution Path") +
+  theme_minimal()
+```

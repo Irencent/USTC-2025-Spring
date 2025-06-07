@@ -1,0 +1,11 @@
+Package: TimesTwoRcpp
+Title: Multiply Numbers by Two Using Rcpp
+Version: 0.1.0
+Authors@R: person("Hu", "Yanshen", email = "hyanshen717@mail.ustc.edu.cn", role = c("aut", "cre"))
+Description: A simple demonstration package using Rcpp to multiply numbers by two.
+Imports: Rcpp
+LinkingTo: Rcpp
+License: GPL-3
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2

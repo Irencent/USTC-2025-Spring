@@ -1,0 +1,12 @@
+name: Buffon_experiment
+title: Buffon_experiment
+username: irencent
+account: irencent
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 14776400
+bundleId: 10301926
+url: https://irencent.shinyapps.io/Buffon_experiment/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

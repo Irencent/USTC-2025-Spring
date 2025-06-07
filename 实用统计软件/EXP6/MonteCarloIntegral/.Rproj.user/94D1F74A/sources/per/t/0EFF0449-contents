@@ -1,0 +1,209 @@
+---
+title: "test-demo-MonteCarloIntegral"
+author: "胡延伸PB22050983"
+date: "2025-05-25"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+install.packages("./TimesTwoRcpp_0.1.0.tar.gz", repos = NULL)
+install.packages('MonteCarloIntegral_1.0.0.tar.gz', repos = NULL)
+```
+
+# 1 R 包开发
+
+1.  使用示例函数 (PPT 第 13 页) 测试你创建的 R 包. 需要给出代码和结果.
+
+```{r}
+library(MonteCarloIntegral)
+
+# 示例测试
+obj <- mc_int(x_range = c(0, 1), fun = "x^2*sin(x^2/pi)", B = 1e3, seed = 123)
+plot(obj)
+```
+
+## 
+
+2.  使用你创建的 R 包估计
+
+$$
+f(x)=\frac{1}{\sqrt{2 \pi}} e^{-\frac{x^2}{2}}
+$$
+
+在区间 $[-2,2]$ 的积分值，并画出图像．要求在函数中设置蒙特卡洛次数为 `1e6` ，随机种子为 `15` ．
+
+```{r}
+# 计算积分
+set.seed(15)
+result <- mc_int(
+  x_range = c(-2, 2),
+  fun = "exp(-x^2/2)/sqrt(2*pi)",  # 正确语法
+  B = 1e6,
+  seed = 15
+)
+
+# 输出结果
+cat("Estimated Integral:", result$I, "\n")           # 应接近 0.9544997
+cat("True Value (approx):", pnorm(2) - pnorm(-2), "\n")
+
+# 绘图
+plot(result)  # 应显示正态分布曲线和积分区域
+```
+
+# Rcpp
+
+1．使用 Rcpp 计算向量的交错和
+
+$$
+S=\sum_{k=1}^n(-1)^k x_k
+$$
+
+设置随机种子为 15 ，生成 1 e 6 个服从标准正态分布 $N(0,1)$ 的样本，并计算这组样本的交错和．
+
+```{r}
+library(Rcpp)
+
+# 编译Rcpp函数
+sourceCpp("alternating_sum.cpp")
+
+# 生成数据
+set.seed(15)
+x <- rnorm(1e6)  # 生成1e6个标准正态分布样本
+
+# 计算交错和
+result <- alternating_sum(x)
+
+# 输出结果
+cat("交错和 S =", result, "\n")
+```
+
+2．考虑向量 $\mathbf{x}=\left(x_1, x_2, \ldots, x_n\right), \mathbf{y}=\left(y_1, y_2, \ldots, y_m\right)$ ，定义 $\mathbf{x}$ 和 $\mathbf{y}$ 的离散卷积 $\mathbf{z}=\left(z_1, z_2, \ldots, z_{n+m-1}\right)$ 为
+
+$$
+z_k=\sum_{(i, j): i+j=k} x_i y_j
+$$
+
+使用 Rcpp 实现上述离散卷积运算，并计算 $(1,2,3,4,5)$ 和 $(1,2,3)$ 的离散卷积．
+
+```{r}
+library(Rcpp)
+
+# 编译Rcpp函数
+sourceCpp("convolve.cpp")
+
+# 输入向量
+x <- c(1, 2, 3, 4, 5)
+y <- c(1, 2, 3)
+
+# 计算离散卷积
+result <- convolve_cpp(x, y)
+
+# 输出结果
+cat("离散卷积结果：", result, "\n")
+```
+
+3．使用 Rcpp 编写计算矩阵各行模的最大值的函数，将该函数应用于 $\left(\begin{array}{ll}1 & 4 \\ 2 & 9\end{array}\right)$ 之上．
+
+```{r}
+library(Rcpp)
+
+# 编译Rcpp函数
+sourceCpp("max_row_norm.cpp")
+
+# 输入矩阵
+mat <- matrix(c(1, 2, 4, 9), nrow = 2, byrow = TRUE)
+print("矩阵:")
+print(mat)
+
+# 计算各行模的最大值
+result <- max_row_norm(mat)
+
+# 输出结果
+cat("\n各行模的最大值:", result, "\n")
+```
+
+4．使用 Rcpp 创建如下数据框．
+
+```         
+## x s
+## 1 6 xyz
+## 2 6 ABC
+## 3 6 456
+```
+
+```{r}
+library(Rcpp)
+
+# 编译Rcpp函数
+sourceCpp("create_dataframe.cpp")
+
+# 生成数据框
+df <- create_df()
+
+# 输出结果
+print(df)
+```
+
+5．使用 Rcpp 实现函数
+
+$$
+f(x, y)= \begin{cases}x^2, & \text { if } x<y \\ -(x-y)^2, & \text { if } x \geqslant y\end{cases}
+$$
+
+要求该函数可进行向量化运算．设置随机种子为 15 ，从均匀分布 $U(4,6)$ 中生成 10 个样本作为 $x$ ，再从均匀分布 $U(4,6)$ 中生成 10 个样本作为 $y$ ，计算这 10 组 $(x, y)$ 在该函数下的值．
+
+```{r}
+library(Rcpp)
+
+# 编译Rcpp函数
+sourceCpp("f_xy.cpp")
+
+# 生成数据
+set.seed(15)
+x <- runif(10, min = 4, max = 6)
+y <- runif(10, min = 4, max = 6)
+
+# 计算函数值
+result <- f_xy(x, y)
+
+# 输出结果
+cat("x:", round(x, 4), "\n")
+cat("y:", round(y, 4), "\n")
+cat("f(x, y):", round(result, 4), "\n")
+```
+
+6．使用 Rcpp，并利用均匀分布进行蒙特卡洛积分，估计
+
+$$
+f(x)=\frac{1}{\sqrt{2 \pi}} e^{-\frac{x^2}{2}}
+$$
+
+在任意有限区间上的积分值．设置蒙特卡洛次数为 1 e 6 ，随机种子为 15 ，估计该函数在区间 $[-2,2]$ 上的积分．注：在 Rcpp 中可使用 M＿PI 表示 $\pi$ ．
+
+```{r}
+library(Rcpp)
+
+# 编译Rcpp函数
+sourceCpp("monte_carlo_integral.cpp")
+
+# 计算积分
+set.seed(15)  # 额外设置种子（可选，函数内部已设置）
+result <- monte_carlo_integral(a = -2, b = 2, B = 1e6, seed = 15)
+
+# 输出结果
+cat("蒙特卡洛估计值:", result, "\n")
+cat("理论值 (pnorm(2) - pnorm(-2)):", pnorm(2) - pnorm(-2), "\n")
+```
+
+7．学习第 10 个 PPT 第 38－43 页，并结合第 9 个 PPT 相关内容，通过 Rcpp 创建 R 包，实现数字乘 2 的简单例子．使用你创建的 R 包，计算向量 $(1,2,3)$ 乘 2 的结果，并提交创建好的 R 包的压缩包附件．
+
+注：此处与普通 R 包创建不同，不能删除 NAMESPACE 文件．
+
+```{r}
+library(TimesTwoRcpp)
+timesTwo(c(1, 2, 3))
+```

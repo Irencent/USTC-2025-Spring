@@ -1,0 +1,27 @@
+{
+    "id": "08A5B2B9",
+    "path": "~/Desktop/实用统计软件/EXP6/MonteCarloIntegral/R/mc_int.R",
+    "project_path": "R/mc_int.R",
+    "type": "r_source",
+    "hash": "2117984977",
+    "contents": "",
+    "dirty": true,
+    "created": 1748177166210.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "tempName": "Untitled1",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "3,44",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1748177859,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1748178252003,
+    "read_only": false,
+    "read_only_alternatives": []
+}

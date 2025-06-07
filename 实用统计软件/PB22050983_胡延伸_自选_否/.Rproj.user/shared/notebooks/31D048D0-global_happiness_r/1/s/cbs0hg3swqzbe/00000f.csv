@@ -1,0 +1,12 @@
+"0","# 查看缺失情况"
+"0","colSums(is.na(happiness_all))"
+"1","          Year        Country HappinessScore            GDP  SocialSupport         Health        Freedom     Generosity 
+             0              0              0              0              0              0              0              0 
+         Trust 
+             0 
+"
+"0","# 如需填充或删除缺失"
+"0","happiness_all <- na.omit(happiness_all)"
+"0",""
+"0","#happiness_all"
+"0",""

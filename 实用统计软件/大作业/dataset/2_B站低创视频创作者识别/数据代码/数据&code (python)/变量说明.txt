@@ -1,0 +1,12 @@
+'sex':“性别”
+'types':“种类“
+'level':“等级”
+'birthday':“生日”
+'following':“关注人数"
+'fans':“粉丝人数”
+'view':“总播放量”
+'likes':“获赞数量”
+'album':“相册数量”
+'article':“文章数量”
+'video':”视频数量“
+‘audio’：”音频数量“

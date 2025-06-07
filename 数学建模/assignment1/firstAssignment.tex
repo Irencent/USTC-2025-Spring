@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage{ctex}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{geometry}
+
+\title{数学建模第一次作业}
+\author{胡延伸 PB22050983}
+\begin{document}
+\maketitle
+\section{问题描述}
+现打算测量一幢校内建筑物（例如图书馆、教学楼）的高度。要求测量方法简便、测量精度高、测量费用少、无需高精尖设备。
+\section{测量方法及过程}
+本次测量采用的方法是三角测量，即选定一个基点，测量站在该基点时我的眼睛到图书馆顶端的仰角，然后由基点到图书馆的距离、我的眼睛高度和仰角计算出图书馆的高度。
+
+测量步骤很简单。首先标记测量起点和我站立的基点，两者间距离设为 $d$, 站立在基点位置，用手机水平仪软件测量出我的眼睛到图书馆顶部的仰角 $\theta$, 我的眼睛高度(1.7 m)记为 $h_0$, 则图书馆的高度计算公式为:\[H = \tan{\theta} \cdot d + h_0\]
+
+然后我测量了三组数据,
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        &   1           &   2           &   3 \\
+        \hline
+    距离(d/m) &  33.1        &   40.4        &   48.11\\
+    \hline
+    仰角($\theta$/角度) &  $66^\circ$  &  $61^\circ$   &   $57^{\circ}$\\
+    \hline
+    仰角弧度制 & 1.1519 & 1.0647    &   0.9948 \\
+    \hline
+\end{tabular}
+\end{table}
+
+利用上面公式，计算出来的高度分别是: 76.04 m、74.59 m、75.78 m。 取个平均值，得到图书感大概高 75.47 m。 
+
+\section{误差分析}
+误差来源于三个方面: 基点到起点的距离测量，仰角的测量, 还有我站姿引起的微小变化。
+
+利用全微分公式:\[\Delta{H} = \tan{\theta} \cdot \Delta{d} + d \cdot \sec^2{\theta}\cdot \Delta{\theta} + \Delta{h_0}\]
+
+由于我手中并没有 10 m以上的尺子，大概估算一下 $\Delta d \approx 1\ \text{m}$; 手机测量仰角的精度也有限, $\Delta{\theta} \approx 2^{\circ}$; 站姿的误差 $\Delta{h_0} = 0.05\ \text{cm}$。
+
+综合计算一下, 三次测算误差分别为 5.07 m、4.70 m、4.60 m。平均为 4.79 m。
+
+因此图书馆高大概 $75.47\pm 4.79\ \text{m}$.
+\end{document}

@@ -1,0 +1,6 @@
+"0","library(TimesTwoRcpp)"
+"0","timesTwo(c(1, 2, 3))"
+"2","G1;H1;Errorh in timesTwo(c(1, 2, 3)) : could not find function ""timesTwo""
+Error during wrapup: not that many frames on the stack
+Error: no more error handlers available (recursive errors?); invoking 'abort' restart
+g"

@@ -1,0 +1,6 @@
+"0","# 简单散点图看 GDP 与幸福关系"
+"0","ggplot(happiness_all, aes(x = GDP, y = HappinessScore)) +"
+"0","  geom_point(alpha = 0.6) +"
+"0","  geom_smooth(method = ""lm"", se = FALSE) +"
+"0","  labs(title = ""人均GDP与幸福指数关系"")"
+"0",""

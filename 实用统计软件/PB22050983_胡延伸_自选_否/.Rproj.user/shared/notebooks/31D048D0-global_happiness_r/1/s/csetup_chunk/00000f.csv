@@ -1,0 +1,334 @@
+"0","knitr::opts_chunk$set(echo = FALSE, message = FALSE, results = 'hide',warning = FALSE)"
+"0",""
+"0","options(repos = c(CRAN = ""https://mirrors.tuna.tsinghua.edu.cn/CRAN/""))"
+"0","install.packages(c(""tidyverse"",""stringr""))"
+"2","G1;H1;Errorh in install.packages : Updating loaded packages
+g"
+"0","install.packages(""ggplot2"")"
+"2","trying URL 'https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/macosx/big-sur-arm64/contrib/4.5/ggplot2_3.5.2.tgz'
+"
+"2","Content type 'application/octet-stream' length 5012921 bytes (4.8 MB)
+"
+"2","="
+"2","="
+"2","="
+"2","="
+"2","====="
+"2","="
+"2","=="
+"2","="
+"2","=="
+"2","="
+"2","="
+"2","=="
+"2","="
+"2","=="
+"2","======="
+"2","====================="
+"2","
+downloaded 4.8 MB
+
+"
+"1","
+The downloaded binary packages are in
+	/var/folders/nj/6hcc0q8x30x74w9dhvw1xz2r0000gn/T//Rtmp0KPl0u/downloaded_packages
+"
+"0","install.packages(""farver"")"
+"2","trying URL 'https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/macosx/big-sur-arm64/contrib/4.5/farver_2.1.2.tgz'
+"
+"2","Content type 'application/octet-stream' length 1969277 bytes (1.9 MB)
+"
+"2","="
+"2","="
+"2","="
+"2","="
+"2","=="
+"2","="
+"2","====="
+"2","="
+"2","="
+"2","============="
+"2","=="
+"2","="
+"2","=="
+"2","===="
+"2","==="
+"2","========="
+"2","=="
+"2","
+downloaded 1.9 MB
+
+"
+"1","
+The downloaded binary packages are in
+	/var/folders/nj/6hcc0q8x30x74w9dhvw1xz2r0000gn/T//Rtmp0KPl0u/downloaded_packages
+"
+"0","install.packages(""tzdb"")"
+"2","trying URL 'https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/macosx/big-sur-arm64/contrib/4.5/tzdb_0.5.0.tgz'
+"
+"2","Content type 'application/octet-stream' length 1278640 bytes (1.2 MB)
+"
+"2","="
+"2","="
+"2","=="
+"2","="
+"2","="
+"2","======"
+"2","=="
+"2","="
+"2","=================="
+"2","================="
+"2","
+downloaded 1.2 MB
+
+"
+"1","
+The downloaded binary packages are in
+	/var/folders/nj/6hcc0q8x30x74w9dhvw1xz2r0000gn/T//Rtmp0KPl0u/downloaded_packages
+"
+"0","install.packages(""timechange"", dependencies = TRUE)"
+"2","trying URL 'https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/macosx/big-sur-arm64/contrib/4.5/timechange_0.3.0.tgz'
+"
+"2","Content type 'application/octet-stream' length 888951 bytes (868 KB)
+"
+"2","="
+"2","="
+"2","="
+"2","=="
+"2","="
+"2","======"
+"2","=="
+"2","===="
+"2","======"
+"2","=========================="
+"2","
+downloaded 868 KB
+
+"
+"1","
+The downloaded binary packages are in
+	/var/folders/nj/6hcc0q8x30x74w9dhvw1xz2r0000gn/T//Rtmp0KPl0u/downloaded_packages
+"
+"0","install.packages(""ggcorrplot"", dependencies = T)"
+"2","trying URL 'https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/macosx/big-sur-arm64/contrib/4.5/ggcorrplot_0.1.4.1.tgz'
+"
+"2","Content type 'application/octet-stream' length 29146 bytes (28 KB)
+==========================="
+"2","======================="
+"2","
+downloaded 28 KB
+
+"
+"1","
+The downloaded binary packages are in
+	/var/folders/nj/6hcc0q8x30x74w9dhvw1xz2r0000gn/T//Rtmp0KPl0u/downloaded_packages
+"
+"0","install.packages(""factoextra"")"
+"2","G1;H1;Errorh in install.packages : Updating loaded packages
+g"
+"0","install.packages(""ggpubr"", dependencies = T)"
+"2","trying URL 'https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/macosx/big-sur-arm64/contrib/4.5/ggpubr_0.6.0.tgz'
+"
+"2","Content type 'application/octet-stream' length 2093017 bytes (2.0 MB)
+"
+"2","="
+"2","="
+"2","="
+"2","="
+"2","===="
+"2","==="
+"2","====="
+"2","========="
+"2","="
+"2","====="
+"2","====="
+"2","=="
+"2","===="
+"2","==="
+"2","=="
+"2","=="
+"2","="
+"2","
+downloaded 2.0 MB
+
+"
+"1","
+The downloaded binary packages are in
+	/var/folders/nj/6hcc0q8x30x74w9dhvw1xz2r0000gn/T//Rtmp0KPl0u/downloaded_packages
+"
+"0","install.packages(""broom"", dependencies = T)"
+"2","trying URL 'https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/macosx/big-sur-arm64/contrib/4.5/broom_1.0.8.tgz'
+"
+"2","Content type 'application/octet-stream' length 1941713 bytes (1.9 MB)
+"
+"2","="
+"2","="
+"2","="
+"2","=="
+"2","="
+"2","=="
+"2","=="
+"2","=="
+"2","======================================"
+"2","
+downloaded 1.9 MB
+
+"
+"1","
+The downloaded binary packages are in
+	/var/folders/nj/6hcc0q8x30x74w9dhvw1xz2r0000gn/T//Rtmp0KPl0u/downloaded_packages
+"
+"0","install.packages(""rnaturalearth"")"
+"2","trying URL 'https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/macosx/big-sur-arm64/contrib/4.5/rnaturalearth_1.0.1.tgz'
+"
+"2","Content type 'application/octet-stream' length 1697437 bytes (1.6 MB)
+"
+"2","="
+"2","="
+"2","=="
+"2","=="
+"2","===="
+"2","="
+"2","="
+"2","================"
+"2","=="
+"2","="
+"2","========"
+"2","======"
+"2","=="
+"2","==="
+"2","
+downloaded 1.6 MB
+
+"
+"1","
+The downloaded binary packages are in
+	/var/folders/nj/6hcc0q8x30x74w9dhvw1xz2r0000gn/T//Rtmp0KPl0u/downloaded_packages
+"
+"0","install.packages(""rnaturalearthdata"")"
+"2","trying URL 'https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/macosx/big-sur-arm64/contrib/4.5/rnaturalearthdata_1.0.0.tgz'
+"
+"2","Content type 'application/octet-stream' length 3324862 bytes (3.2 MB)
+"
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","=="
+"2","==========="
+"2","="
+"2","==="
+"2","==="
+"2","==="
+"2","======="
+"2","="
+"2","==========="
+"2","="
+"2","="
+"2","="
+"2","
+downloaded 3.2 MB
+
+"
+"1","
+The downloaded binary packages are in
+	/var/folders/nj/6hcc0q8x30x74w9dhvw1xz2r0000gn/T//Rtmp0KPl0u/downloaded_packages
+"
+"0","install.packages(""sf"")"
+"2","trying URL 'https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/macosx/big-sur-arm64/contrib/4.5/sf_1.0-21.tgz'
+"
+"2","Content type 'application/octet-stream' length 29674376 bytes (28.3 MB)
+"
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","
+downloaded 28.3 MB
+
+"
+"1","
+The downloaded binary packages are in
+	/var/folders/nj/6hcc0q8x30x74w9dhvw1xz2r0000gn/T//Rtmp0KPl0u/downloaded_packages
+"
+"0","install.packages(""showtext"")"
+"2","trying URL 'https://mirrors.tuna.tsinghua.edu.cn/CRAN/bin/macosx/big-sur-arm64/contrib/4.5/showtext_0.9-7.tgz'
+"
+"2","Content type 'application/octet-stream' length 465051 bytes (454 KB)
+="
+"2","=="
+"2","=="
+"2","=="
+"2","="
+"2","=="
+"2","=="
+"2","======="
+"2","====="
+"2","===="
+"2","====="
+"2","====="
+"2","============"
+"2","
+downloaded 454 KB
+
+"
+"1","
+The downloaded binary packages are in
+	/var/folders/nj/6hcc0q8x30x74w9dhvw1xz2r0000gn/T//Rtmp0KPl0u/downloaded_packages
+"
+"0","library(showtext)"
+"0","library(ggplot2)"
+"0","# 自动使用 showtext 渲染字体"
+"0","showtext_auto()"
+"0",""
+"0","# 添加中文字体"
+"0","font_add(""cn"", ""./STHeiti Medium.ttc"")"
+"0",""
+"0","theme_set(theme_minimal(base_family = ""cn""))"

@@ -1,0 +1,5 @@
+"0","library(MonteCarloIntegral)"
+"0",""
+"0","# 示例测试"
+"0","obj <- mc_int(x_range = c(0, 1), fun = ""x^2*sin(x^2/pi)"", B = 1e3, seed = 123)"
+"0","plot(obj)"

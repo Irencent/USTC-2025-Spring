@@ -1,0 +1,5 @@
+"0","ggplot(happiness_all, aes(x = as.factor(Year), y = HappinessScore)) +"
+"0","  geom_boxplot(fill = ""skyblue"") +"
+"0","  labs(title = ""幸福指数年度分布箱型图"", x = ""年份"", y = ""幸福指数"") +"
+"0","  theme_minimal()"
+"0",""

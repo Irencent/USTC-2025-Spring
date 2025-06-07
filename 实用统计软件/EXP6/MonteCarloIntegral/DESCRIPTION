@@ -1,0 +1,16 @@
+Package: MonteCarloIntegral
+Type: Package
+Title: Monte Carlo Integration Tools
+Version: 1.0.0
+Authors@R: c(
+    person(
+      "Hu Yanshen",
+      email = "hyanshen717@mail.ustc.edu.cn",
+      role = c("aut", "cre")
+    )
+  )
+Description: Implements Monte Carlo integration for functions over finite intervals.
+License: GPL-3
+Imports: stats
+Encoding: UTF-8
+RoxygenNote: 7.3.2
